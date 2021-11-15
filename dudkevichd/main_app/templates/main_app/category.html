@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<section class="bg-text-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bg-text">
+                    <h3>My Portfolio website</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blog-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="blog-post-area-style">
+                {% include 'include/_output_post.html' %}
+            </div>
+        </div>
+    </div>
+    {% include 'include/_pagination.html' %}
+</section>
+{% endblock %}

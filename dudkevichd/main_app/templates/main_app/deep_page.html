@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load sidebar %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+<section class="single-blog-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="border-top">
+                    <div class="col-md-8">
+                        <div class="blog-area">
+                            <div class="blog-area-part">
+                                <h2>{{ posts.title }}</h2>
+                                <h4>Автор курсов {{posts.author}}</h4>
+                                <h5>Просмотры {{posts.views}}</h5>
+                                <span>
+                                    {% for tag in posts.tag.all %}
+                                    <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                                    {% endfor %}
+                                </span>
+                                <div>
+                                    <p>{{posts.content|safe}}</p>
+                                </div>
+                                <img src="{{ posts.photo.url }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="newsletter">
+                            <h2 class="sidebar-title">Поиск</h2>
+                            <form action="{% url 'search' %}" method="get">
+                                <input type="text" name="s" placeholder="Поиск...">
+                                <input type="submit" value="Искать!">
+                            </form>
+                        </div>
+                        {% get_popular_post 5 %}
+                        <div class="sidebar-ads">
+                            <img src="img/sidebar-ads.jpg" alt="">
+                            <p>Place For Your <br> Ad Banner</p>
+                        </div>
+                        {% get_tag_cloud %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'include/_pagination.html' %}
+</section>
+{% endblock %}

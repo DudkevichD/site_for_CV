@@ -1,0 +1,18 @@
+
+{% load static %}
+{% for post in posts %}
+<div class="col-md-3">
+    <div class="single-post">
+        {% if post.photo %}
+        <img src="{{ post.photo.url }}" alt="">
+        {% else %}
+        <img src="{% static 'main_app/img/post-image2.jpg' %}" alt="">
+        {% endif %}
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title|truncatechars:15 }}</a></h3>
+        <h4><span>Course By: <span class="author-name">{{ post.author }}</span></span>
+        </h4>
+        <p>{{ post.content|truncatewords_html:10|safe }}</p>
+        <h4><span>{{ post.created_at|date:"j E Y" }} г.</span></h4>
+    </div>
+</div>
+{% endfor %}

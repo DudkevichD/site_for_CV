@@ -1,0 +1,17 @@
+{% load tag_menu  %}
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="logo">
+                    <h2><a href="{% url 'home' %}">DudkevichD</a></h2>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="menu">
+                    {% show_menu user %}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

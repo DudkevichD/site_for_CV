@@ -1,0 +1,14 @@
+<div class="{{ menu_class }}">
+    <ul>
+        {% for category in categories %}
+        <li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+        {% endfor %}
+        {% if  user.is_authenticated %}
+        <li><a href="{% url 'feedback' %}">Обратная связь</a></li>
+        <li><a href="{% url 'exit' %}">Выйти из {{ user.username }}</a></li>
+        {% else %}
+        <li><a href="{% url 'register' %}">Регистрация</a></li>
+        <li><a href="{% url 'login' %}">Авторизация</a></li>
+        {% endif %}
+    </ul>
+</div>

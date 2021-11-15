@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load sidebar %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<section class="single-blog-area">
+    <div class="container">
+
+
+        <h1>Пригласить на собеседование</h1>
+        {% if messages %}
+
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+        {% else %}
+        <div class="alert alert-{{ massage.tags }}" role="alert">
+            {{ message }}
+        </div>
+        {% endif %}
+
+        {% endfor %}
+
+
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Отправить приглашение</button>
+
+        </form>
+
+
+    </div>
+
+</section>
+{% endblock %}
